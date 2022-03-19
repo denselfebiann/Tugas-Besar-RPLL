@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2022 at 03:46 PM
+-- Generation Time: Mar 19, 2022 at 04:44 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.28
+-- PHP Version: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,6 +32,13 @@ CREATE TABLE `tabeladmin` (
   `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tabeladmin`
+--
+
+INSERT INTO `tabeladmin` (`idAdmin`, `idUser`) VALUES
+(1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +54,13 @@ CREATE TABLE `tabelbarang` (
   `namaBarang` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tabelbarang`
+--
+
+INSERT INTO `tabelbarang` (`idBarang`, `idStore`, `deskripsiBarang`, `gambarBarang`, `hargaBarang`, `namaBarang`) VALUES
+(1, 1, 'Hoodie Abu bahan kain katun ukuran XL kondisi 9/10.', '', 175000, 'Hoodie abu');
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +72,13 @@ CREATE TABLE `tabelbuyer` (
   `idUser` int(11) NOT NULL,
   `alamat` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tabelbuyer`
+--
+
+INSERT INTO `tabelbuyer` (`idBuyer`, `idUser`, `alamat`) VALUES
+(1, 2, 'jl.dipati ukur no 94');
 
 -- --------------------------------------------------------
 
@@ -108,6 +128,13 @@ CREATE TABLE `tabelseller` (
   `idUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tabelseller`
+--
+
+INSERT INTO `tabelseller` (`idSeller`, `idUser`) VALUES
+(1, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -136,6 +163,13 @@ CREATE TABLE `tabelstore` (
   `namaStore` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tabelstore`
+--
+
+INSERT INTO `tabelstore` (`idStore`, `idSeller`, `alamat`, `phoneNumber`, `pin`, `namaStore`) VALUES
+(1, 1, 'jl.cibaduyut 5', '0891253647887', '102030', 'STORE-AGE');
+
 -- --------------------------------------------------------
 
 --
@@ -150,6 +184,15 @@ CREATE TABLE `tabeluser` (
   `password` varchar(100) NOT NULL,
   `wrapPay` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tabeluser`
+--
+
+INSERT INTO `tabeluser` (`idUser`, `email`, `firstName`, `lastName`, `password`, `wrapPay`) VALUES
+(1, 'admin@gmail.com', 'user', 'admin', 'admn123', 0),
+(2, 'pierre@gmail.com', 'Pierre', 'Sebastian', 'pierre123', 0),
+(3, 'store.age@gmail.com', 'STORE', 'AGE', 'store123', 0);
 
 --
 -- Indexes for dumped tables
@@ -231,19 +274,19 @@ ALTER TABLE `tabeluser`
 -- AUTO_INCREMENT for table `tabeladmin`
 --
 ALTER TABLE `tabeladmin`
-  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAdmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tabelbarang`
 --
 ALTER TABLE `tabelbarang`
-  MODIFY `idBarang` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idBarang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tabelbuyer`
 --
 ALTER TABLE `tabelbuyer`
-  MODIFY `idBuyer` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idBuyer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tabelkeranjang`
@@ -261,7 +304,7 @@ ALTER TABLE `tabelpayment`
 -- AUTO_INCREMENT for table `tabelseller`
 --
 ALTER TABLE `tabelseller`
-  MODIFY `idSeller` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idSeller` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tabelstatistikstore`
@@ -273,13 +316,13 @@ ALTER TABLE `tabelstatistikstore`
 -- AUTO_INCREMENT for table `tabelstore`
 --
 ALTER TABLE `tabelstore`
-  MODIFY `idStore` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idStore` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tabeluser`
 --
 ALTER TABLE `tabeluser`
-  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -338,4 +381,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
